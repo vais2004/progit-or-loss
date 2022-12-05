@@ -7,9 +7,9 @@ var outputBox = document.querySelector("#output-box");
 submitBtn.addEventListener('click', submitHandler);
 
 function submitHandler(){
-    var ip = initialPrice.value;
-    var qty = stocksQuantity.value;
-    var curr  = currentPrice.value;
+    var ip = Number(initialPrice.value);
+    var qty = Number(stocksQuantity.value);
+    var curr  = Number(currentPrice.value);
 
     calculateProfitAndLoss(ip, qty, curr);
 }
@@ -21,20 +21,26 @@ function calculateProfitAndLoss(initial, quantity, current){
         var loss = (initial - current)*quantity;
         var lossPercentage = (loss / initial)*100;
 
-        console.log('hey the loss is${loss} and the percent is ${lossPercent}%');
+        showOutput('hey the loss is ${loss} and the percent is ${lossPercentage}%');
     }
     else if(current > initial){
         var profit = (current - initial)*quantity;
         var profitPercentage = (profit / initial)*100;
 
-        console.log('hey the profit is${profit} and the percent is ${profitPercent}%');
+        showOutput('hey the profit is ${profit} and the percent is ${profitPercentage}%');
     }
     else{
-        console.log('no pain no gain and no gain no pain');
+        showOutput('no pain no gain and no gain no pain');
     }
 }
 
-calculateProfitAndLoss(100, 10, 10);
-calculateProfitAndLoss(10, 10, 100);
-calculateProfitAndLoss(10, 10, 10);
+function showOutput(message, status){
+      
+    
+
+
+
+    outputBox.innerHTML = message;
+}
+
 
